@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/poi-osm-schema-v1.json",
+  "title": "poi_osm result schema v1",
+  "type": "object",
+  "required": ["schema_version", "source", "query", "results"],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "source": {
+      "type": "object",
+      "required": ["provider", "geocoder", "overpass_endpoint"],
+      "properties": {
+        "provider": { "type": "string" },
+        "geocoder": { "type": "string" },
+        "overpass_endpoint": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "query": {
+      "type": "object",
+      "required": [
+        "input",
+        "resolved_center",
+        "radius_m",
+        "whitelist",
+        "timestamp_utc"
+      ],
+      "properties": {
+        "input": {
+          "type": "object",
+          "required": ["address", "lat", "lon"],
+          "properties": {
+            "address": { "type": ["string", "null"] },
+            "lat": { "type": ["number", "null"] },
+            "lon": { "type": ["number", "null"] }
+          },
+          "additionalProperties": false
+        },
+        "resolved_center": {
+          "type": "object",
+          "required": ["lat", "lon"],
+          "properties": {
+            "lat": { "type": "number" },
+            "lon": { "type": "number" }
+          },
+          "additionalProperties": false
+        },
+        "radius_m": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "whitelist": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["key", "value"],
+            "properties": {
+              "key": { "type": "string" },
+              "value": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "timestamp_utc": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "results": {
+      "type": "object",
+      "required": ["count", "pois"],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pois": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["lat", "lon", "tags"],
+            "properties": {
+              "lat": { "type": "number" },
+              "lon": { "type": "number" },
+              "name": { "type": ["string", "null"] },
+              "tags": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": ["string", "number", "boolean"]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

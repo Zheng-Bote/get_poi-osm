@@ -1,0 +1,51 @@
+name: Manual gh_docs_bot Build
+
+# Author: Robert Zheng
+# created: 2026-01-12
+# updated: 2026-02-01
+# version: 2.2.0
+# description: build and generate static website from markdown files to branch gh-pages
+
+run-name: Manual gh_docs_bot Build by ${{ github.actor }}
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-generate:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build and Generate Site
+        uses: ./
+        with:
+          template: "theme/desktop/fluid_template.html"
+          assets: "theme/fluid/assets"
+          output: "public"
+          docs: "docs"
+          base_path: "https://zheng-bote.github.io/gha_ghpages/"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-site
+          path: public/
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: public
+
+      - name: Deploy to main (public folder)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: main
+          folder: public
+          target-folder: public
