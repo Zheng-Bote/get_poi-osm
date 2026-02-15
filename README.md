@@ -15,6 +15,38 @@ Supports whitelisting, language‑aware POI names, JSON output, and CMake FetchC
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Description](#description)
+- [Features](#features)
+- [Library Shortcut / Developer Introduction](#library-shortcut--developer-introduction)
+  - [What the library gives you](#what-the-library-gives-you)
+  - [Why it’s easy to integrate](#why-its-easy-to-integrate)
+  - [Typical usage pattern](#typical-usage-pattern)
+  - [When to use this library](#when-to-use-this-library)
+- [Pre‑Requisites](#pre%E2%80%91requisites)
+- [Dependencies](#dependencies)
+- [Build](#build)
+- [Install](#install)
+- [Usage (CLI)](#usage-cli)
+  - [Query by coordinates](#query-by-coordinates)
+  - [Query by address](#query-by-address)
+  - [Whitelist examples](#whitelist-examples)
+    - [All tourism POIs](#all-tourism-pois)
+    - [Only viewpoints](#only-viewpoints)
+    - [Viewpoints OR theme parks](#viewpoints-or-theme-parks)
+    - [Restaurants only](#restaurants-only)
+    - [Tourism + Restaurants](#tourism--restaurants)
+- [JSON Output Schema](#json-output-schema)
+- [Using the Library via CMake FetchContent](#using-the-library-via-cmake-fetchcontent)
+  - [1. Add FetchContent to your project](#1-add-fetchcontent-to-your-project)
+  - [2. Link against the library](#2-link-against-the-library)
+- [Example Program Using the Library](#example-program-using-the-library)
+- [Build with CMake](#build-with-cmake)
+- [License](#license)
+- [Author](#author)
+  - [Code Contributors](#code-contributors)
+
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ---
