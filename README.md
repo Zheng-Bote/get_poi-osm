@@ -35,6 +35,9 @@ Supports whitelisting, language‑aware POI names, JSON output, and CMake FetchC
 - Installable shared library + CLI tool
 - FetchContent‑friendly CMake package
 
+> [!NOTE]
+> There is also a Qt6 version of this project: [qt_get_poi-osm](https://github.com/Zheng-Bote/qt_get_poi-osm).
+
 ## Library Shortcut / Developer Introduction
 
 **get_poi-osm** is a lightweight C++23 library designed to make OpenStreetMap POI discovery effortless.
@@ -76,7 +79,7 @@ If you need to fetch points of interest around a coordinate or address — resta
 
 int main() {
     PoiOsmClient client;
-    
+
     auto result = client.queryByCoordinates(48.13743, 11.57549, 1000,
                                             {{"tourism", "viewpoint"}});
 
